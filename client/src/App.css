@@ -15,7 +15,8 @@
   opacity: 1!important;
  }
 .header-shadow {
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, .3);
+  z-index: 1;
  }
 
 .landing-background{
