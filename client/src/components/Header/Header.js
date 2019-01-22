@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ( {shadow} ) => {
     return (
-        <nav className="navbar bg-light">
+        <nav className={shadow ? 'navbar bg-light header-shadow' : 'navbar bg-light'}>
             <a className="navbar-brand text-dark" href="#">BookFinder</a>
         </nav>
     )
