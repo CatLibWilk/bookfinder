@@ -1,9 +1,16 @@
 import React from 'react';
-
+import logo from '../../assets/images/book-logo.png';
+import './landing-style.css';
 
 const Landing = () => {
     return (
-        <div className="landing-background col-12"></div>
+        <div className='row'>
+            <div className="landing-background text-center col-12">
+                <div id="logo-div">
+                    <img src={logo}></img>
+                </div>
+            </div>
+        </div>
     )
 };
 

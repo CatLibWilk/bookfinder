@@ -1,0 +1,33 @@
+#logo-div{
+    padding-top: 15%;
+
+    opacity: 0;
+    -webkit-transition:opacity 2.6s;
+    -moz-transition:opacity 2.6s;
+    -o-transition:opacity 2.6s;
+    transition: opacity 2.6s;
+
+    animation: bounce 2.5s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    animation-iteration-count: infinite;
+ }
+
+ @keyframes bounce {
+    from { transform: translate3d(0, 0, 0);     }
+    to   { transform: translate3d(0, 50px, 0); }
+  }
+  
+  /* Prefix Support */
+  #logo-div {
+    -webkit-animation-name: bounce;
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+  @-webkit-keyframes bounce {
+    from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    to   { -webkit-transform: translate3d(0, 200px, 0); transform: translate3d(0, 200px, 0); }
+  }
