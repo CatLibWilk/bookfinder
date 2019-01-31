@@ -29,7 +29,11 @@ class App extends Component {
     return (
       <div className="wrapper">
         <Header shadow={true}/>
-        <Landing />
+
+        <div className="container-fluid">
+          <Landing />
+        </div>
+        
       </div>
     );
   }

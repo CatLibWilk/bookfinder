@@ -2,14 +2,22 @@
   text-align: center;
  }
 
+ #root {
+   width: 100%;
+ }
+
 .wrapper {
   opacity: 0;
+  width: 100%;
   -webkit-transition:opacity .6s;
   -moz-transition:opacity .6s;
   -o-transition:opacity .6s;
   transition: opacity .6s;
  }
 
+ .navbar {
+   background-color: rgb(255, 231, 211);
+ }
 
 .wrapper-loaded {
   opacity: 1!important;

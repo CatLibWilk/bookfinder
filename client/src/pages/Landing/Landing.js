@@ -7,7 +7,7 @@ const Landing = () => {
         <div className='row'>
             <div className="landing-background text-center col-12">
                 <div id="logo-div">
-                    <img src={logo}></img>
+                    <img className="img-fluid" src={logo}></img>
                 </div>
             </div>
         </div>
