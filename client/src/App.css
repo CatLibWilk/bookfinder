@@ -42,11 +42,18 @@
   background-color: rgb(255, 240, 227);
   min-height: 100vh;
   opacity: 0;
+  padding: 0;
 
   -webkit-transition:opacity 1.6s;
   -moz-transition:opacity 1.6s;
   -o-transition: 1.6s;
   transition: opacity 1.6s;
+ }
+
+ #list {
+   background-color: rgb(255, 247, 240);
+   border-radius: 25px;
+   min-height: 25%;
  }
 
 

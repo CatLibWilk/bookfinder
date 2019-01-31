@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-
+import List from '../../components/List';
 
 class Home extends Component {
     componentDidMount(){
@@ -15,8 +15,8 @@ class Home extends Component {
     render(){
         return (
             <div className='row'>
-                <div id='home-background' className='col-12'>
-                    <h1>Home</h1>
+                <div id='home-background' className='col-12 text-center'>
+                    <List />
                 </div>
             </div>
         )
