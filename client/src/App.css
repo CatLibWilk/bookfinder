@@ -56,6 +56,10 @@
    min-height: 25%;
  }
 
+ #add-btn {
+   background-color: peachpuff;
+ }
+
 
 ::-webkit-scrollbar{
   opacity:0;
