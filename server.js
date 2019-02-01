@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const routes = require('./routes');
+const db = require('./models');
 
 //middleware
 
@@ -15,27 +16,27 @@ if(process.env.NODE_ENV === 'production'){
     app.use(express.state('client/build'))
 };
 
-//add database init stuff when further along
-
-// //true drops tables, false creates if not extant
-// var syncOptions = { force: false };
-
-// // If running a test, set syncOptions.force to true!
-// // clearing the `testdb`
-// if (process.env.NODE_ENV === "test") {
-//   syncOptions.force = true;
-// }
 
 
-// // Start the API server
+//true drops tables, false = CREATE TABLE IS NOT EXISTS
+var syncOptions = { force: true };
 
-// db.sequelize.sync(syncOptions).then(function() {
-//       app.listen(PORT, function() {
-//         console.log("App listening on PORT " + PORT);
-//       });
-// });
+// If running a test, set syncOptions.force to true!
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
 
 
-app.listen(PORT, function(){
-    console.log(`Listening on PORT ${PORT}`)
-})
+// Start the API server
+
+db.sequelize.sync(syncOptions).then(function() {
+      app.listen(PORT, function() {
+        console.log("App listening on PORT " + PORT);
+      });
+});
+
+//Non-DB startup for dev
+// app.listen(PORT, function(){
+//     console.log(`Listening on PORT ${PORT}`)
+// })
