@@ -17,6 +17,12 @@ module.exports = function(sequelize, DataTypes){
         link: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+
+        priority: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 1
         }
     });
 
