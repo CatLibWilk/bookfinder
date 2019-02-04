@@ -1,0 +1,20 @@
+#green {
+    background-color: green;
+ }
+
+ #yellow {
+    background-color: yellow;
+ }
+
+ #red {
+    background-color: red;
+ }
+
+ #grey {
+    background-color: lightgrey;
+ }
+
+ #color-indicator-x {
+    opacity: 0;
+    z-index: -5;
+ }

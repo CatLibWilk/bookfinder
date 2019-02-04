@@ -1,13 +1,17 @@
 import React, { Component} from 'react';
 import List from '../../components/List';
+import ListItem from '../../components/ListItem';
 import AddForm from '../../components/AddForm';
+import API from '../../utils/API';
 
 class Home extends Component {
     constructor(props){
         super(props)
         this.state = {
             title_input: '',
-            author_input: ''
+            author_input: '',
+            priority_input: '',
+            returned_data: []
         }
     }
     componentDidMount(){
@@ -18,9 +22,15 @@ class Home extends Component {
           document.querySelector('#home-background').classList.add('wrapper-loaded');
 
           
-        }  
+        }
+        this.retrieveTitles();
+        console.log(this.state)
     }
 
+    retrieveTitles = () => {
+        API.getBooks()
+            .then(response => { this.setState( { returned_data: response.data} ); console.log(this.state) })
+    }
     handleInput = (e) => {
 
         switch (e.target.id){
@@ -28,7 +38,10 @@ class Home extends Component {
                 this.setState( {title_input: e.target.value} );
                 break;
             case "author-input":
-            this.setState( {author_input: e.target.value} );
+                this.setState( {author_input: e.target.value} );
+                break;
+            case "priority-input":
+                this.setState( {priority_input: e.target.value} );
                 break;
         }
 
@@ -36,8 +49,20 @@ class Home extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('sub call')
-        console.log(this.state)
+        API.addBook( {title: this.state.title_input, author: this.state.author_input, priority: this.state.priority_input} )
+            .then(response => {console.log('Title added to database'); this.retrieveTitles()})
+        document.querySelector('#add-form').reset();
+    }
+
+    handleDelete = (id) => {
+            console.log(id)
+        API.deleteBook(id)
+
+            .then(response => {
+                console.log(response);
+                this.retrieveTitles();
+            })
+
     }
 
     render(){
@@ -47,7 +72,12 @@ class Home extends Component {
 
                     <AddForm width={'col-md-6'} funct={this.handleInput} subFunct={this.handleSubmit}/>
 
-                    <List />
+                    <List>
+                        {this.state.returned_data.length > 0 ? this.state.returned_data.map(book => {
+                            console.log(book)
+                            return <ListItem id={book.id} title={book.title} author={book.author} priority={book.priority} delFunct={() => this.handleDelete(book.id)} />
+                        }) : <h3 className='mt-5'>add your first item</h3>}
+                    </List>
                 </div>
             </div>
         )
