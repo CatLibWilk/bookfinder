@@ -53,6 +53,7 @@ class Home extends Component {
         API.addBook( { title: this.state.title_input, author: this.state.author_input, priority: this.state.priority_input } )
             .then(response => { console.log('Title added to database'); this.retrieveTitles() } );
         document.querySelector('#add-form').reset();
+        this.setState( { priority_input: 0 } );
     }
 
     handleDelete = (id) => {
