@@ -19,9 +19,10 @@ const AddForm = ({ width, funct, subFunct }) => {
                 <div class="form-group">
                     <label for="priority">Priority (lowest-highest)</label>
                     <select class="form-control" id="priority-input" onChange={funct}>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value=''>Select a Priority</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
                     
                     </select>
                 </div>

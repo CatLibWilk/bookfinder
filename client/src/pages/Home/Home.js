@@ -10,7 +10,7 @@ class Home extends Component {
         this.state = {
             title_input: '',
             author_input: '',
-            priority_input: '',
+            priority_input: 0,
             returned_data: []
         }
     }
@@ -29,7 +29,7 @@ class Home extends Component {
 
     retrieveTitles = () => {
         API.getBooks()
-            .then(response => { this.setState( { returned_data: response.data} ); console.log(this.state) })
+            .then(response => { this.setState( { returned_data: response.data} ); console.log(this.state) } )
     }
     handleInput = (e) => {
 
@@ -41,7 +41,8 @@ class Home extends Component {
                 this.setState( {author_input: e.target.value} );
                 break;
             case "priority-input":
-                this.setState( {priority_input: e.target.value} );
+            console.log(`prio is ${e.target.value}`);
+                this.setState( {priority_input: e.target.value} ) ; console.log(this.state);
                 break;
         }
 
@@ -49,19 +50,15 @@ class Home extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        API.addBook( {title: this.state.title_input, author: this.state.author_input, priority: this.state.priority_input} )
-            .then(response => {console.log('Title added to database'); this.retrieveTitles()})
+        API.addBook( { title: this.state.title_input, author: this.state.author_input, priority: this.state.priority_input } )
+            .then(response => { console.log('Title added to database'); this.retrieveTitles() } );
         document.querySelector('#add-form').reset();
     }
 
     handleDelete = (id) => {
-            console.log(id)
+          
         API.deleteBook(id)
-
-            .then(response => {
-                console.log(response);
-                this.retrieveTitles();
-            })
+            .then(response => { console.log(response); this.retrieveTitles(); } )
 
     }
 
