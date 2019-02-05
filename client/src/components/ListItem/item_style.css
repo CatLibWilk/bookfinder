@@ -18,3 +18,9 @@
     opacity: 0;
     z-index: -5;
  }
+
+ .listItem {
+    border-radius: 20px;
+    background-color: rgb(235, 235, 235);
+  }
+
