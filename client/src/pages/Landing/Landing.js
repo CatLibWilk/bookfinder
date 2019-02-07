@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import logo from '../../assets/images/book-logo.png';
 import './landing-style.css';
+import PassPrompt from '../../components/PassPrompt';
 
 
 class Landing extends Component {
@@ -30,6 +31,7 @@ class Landing extends Component {
       render(){
         return (
                 <div className="landing-background text-center col-12">
+                    <PassPrompt />
                     <div id="logo-div">
                         <Link to={'/home'} style={this.state.logged ? null : {pointerEvents: 'none'}}>
                             <img className="img-fluid" src={logo}></img>

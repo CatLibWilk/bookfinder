@@ -2,6 +2,7 @@
   text-align: center;
  }
 
+
  #root {
    width: 100%;
  }
@@ -14,6 +15,10 @@
   -o-transition:opacity .6s;
   transition: opacity .6s;
  }
+/* 
+ #paths-container {
+   padding: 0;
+ } */
 
  .navbar {
    background-color: rgb(255, 231, 211);

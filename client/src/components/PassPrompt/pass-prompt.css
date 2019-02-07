@@ -1,0 +1,27 @@
+#pass-prompt-div {
+    z-index: 1;
+    position: absolute;
+    left: 15%;
+    top: 20%;
+    padding: 10%;
+    background-color: #66B9BF;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    
+    border-radius: 20px;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    #pass-prompt-div {
+        z-index: 1;
+        position: null;
+        left: 0;
+        right: 0;
+        padding: 10%;
+        background-color: #66B9BF;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        
+        border-radius: 20px;
+    }
+}

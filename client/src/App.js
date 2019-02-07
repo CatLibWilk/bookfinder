@@ -17,7 +17,7 @@ class App extends Component {
         <Router>
           <Switch>
 
-          <div className="container-fluid">
+          <div id='paths-container' className="container-fluid p-md-0">
             <Route exact path="/" component={Landing} />
             <Route exact path="/home" component={Home} />
 
