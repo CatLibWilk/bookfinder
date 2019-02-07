@@ -3,25 +3,13 @@ import {Link} from "react-router-dom";
 import logo from '../../assets/images/book-logo.png';
 import './landing-style.css';
 
-// const Landing = () => {
-    
-    
-//     return (
-//         <div className='row'>
-//             <div className="landing-background text-center col-12">
-//                 <div id="logo-div">
-//                     <img className="img-fluid" src={logo}></img>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// };
-
-// export default Landing;
 
 class Landing extends Component {
     constructor (props){
-        super(props)
+        super(props);
+        this.state = {
+          logged: false
+        };
       }
       componentDidMount(){
         setTimeout(load, 2000);
@@ -41,15 +29,13 @@ class Landing extends Component {
 
       render(){
         return (
-            <div className='row'>
                 <div className="landing-background text-center col-12">
                     <div id="logo-div">
-                        <Link to={'/home'}>
+                        <Link to={'/home'} style={this.state.logged ? null : {pointerEvents: 'none'}}>
                             <img className="img-fluid" src={logo}></img>
                         </Link>
                     </div>
                 </div>
-            </div>
         )
       }
 }
