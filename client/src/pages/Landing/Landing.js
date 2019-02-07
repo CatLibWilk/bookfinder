@@ -52,7 +52,7 @@ class Landing extends Component {
           setTimeout(function(){
             document.querySelector('#wrong-alert').classList.remove('visible');
             document.querySelector('#password-input-form').reset();
-          }, 500)
+          }, 1000)
       };
 
  

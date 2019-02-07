@@ -15,7 +15,7 @@ class PassPrompt extends Component{
         return (
             <div id='pass-prompt-div' className='col-md-8 mx-auto'>
             <div id='wrong-alert'><h4>password incorrect</h4></div>
-                <form id="password-input-form" className="form-inline">
+                <form id="password-input-form" className="form-inline justify-content-center">
                    
                     <div className="form-group mx-sm-3 mb-2">
                         <label for="password-input" className="sr-only">Password</label>

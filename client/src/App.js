@@ -13,8 +13,10 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Header shadow={true}/>
         <Router>
+        <div>
+
+          <Header shadow={true}/>
           <Switch>
 
           <div id='paths-container' className="container-fluid p-md-0">
@@ -24,6 +26,8 @@ class App extends Component {
           </div>
 
           </Switch>
+
+        </div>
         </Router>
       </div>
     );
