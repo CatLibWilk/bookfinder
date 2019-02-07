@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import logo from '../../assets/images/book-logo.png';
 import './landing-style.css';
 import PassPrompt from '../../components/PassPrompt';
+import API from '../../utils/API';
 
 
 class Landing extends Component {
@@ -28,10 +29,37 @@ class Landing extends Component {
         }
       }
 
+      passCheck = (pass) => {
+        const that = this;
+        API.checkPass(pass, (response) => {
+          if(response){
+            that.setState( {logged: true} );
+            that.hide();
+          }else{
+            that.wrongAlert();
+          }
+        })
+      }
+      
+      
+      hide = () => {
+        document.querySelector('#pass-prompt-div').classList.add('hide-pass')
+      };
+
+      wrongAlert = () => {
+        document.querySelector('#wrong-alert').classList.add('visible')
+
+          setTimeout(function(){
+            document.querySelector('#wrong-alert').classList.remove('visible');
+            document.querySelector('#password-input-form').reset();
+          }, 500)
+      };
+
+ 
       render(){
         return (
                 <div className="landing-background text-center col-12">
-                    <PassPrompt />
+                    <PassPrompt id='pass-prompt' funct={this.passCheck}/>
                     <div id="logo-div">
                         <Link to={'/home'} style={this.state.logged ? null : {pointerEvents: 'none'}}>
                             <img className="img-fluid" src={logo}></img>

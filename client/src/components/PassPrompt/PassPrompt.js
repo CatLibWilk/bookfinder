@@ -14,12 +14,14 @@ class PassPrompt extends Component{
     
         return (
             <div id='pass-prompt-div' className='col-md-8 mx-auto'>
-                <form class="form-inline">
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="inputPassword2" class="sr-only">Password</label>
-                    <input type="password" class="form-control" id="inputPassword2" placeholder="Password"></input>
-                </div>
-                <button type="submit" class="btn btn-primary mb-2">Enter</button>
+            <div id='wrong-alert'><h4>password incorrect</h4></div>
+                <form id="password-input-form" className="form-inline">
+                   
+                    <div className="form-group mx-sm-3 mb-2">
+                        <label for="password-input" className="sr-only">Password</label>
+                        <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
+                    </div>
+                    <button type="submit" className="btn btn-primary mb-2" onClick={(e) => {e.preventDefault(); this.props.funct(document.querySelector('#password-input').value)}}>Enter</button>
                 </form>
             </div>
         )
