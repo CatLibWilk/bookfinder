@@ -34,6 +34,17 @@ module.exports = {
             console.log(`response from db is ${response}`)
              res.send('Item successfully deleted');
          });
-     }
+     },
+
+    getUser: function(req, res) {
+        db.User.findAll({
+            where: {
+                name: req.params.id
+            }
+        }).then(response => {
+            console.log(response)
+            res.send(response)
+        })
+    }
 
 }

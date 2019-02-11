@@ -12,8 +12,8 @@ export default {
         return axios.delete('/deleteBook/' + id)
     },
 
-    checkPass: function(pass, cb){
-       const check = pass === '333';
-        cb(check);
+    checkPass: function(userInfo){
+        console.log(userInfo)
+        return axios.get('/getUser/' + userInfo.user)
     }
 }

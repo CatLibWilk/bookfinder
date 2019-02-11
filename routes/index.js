@@ -10,4 +10,7 @@ router.route('/getBooks')
 
 router.route('/deleteBook/:id')
         .delete(dbController.deleteBook)
+
+router.route('/getUser/:id')
+        .get(dbController.getUser)
 module.exports = router;

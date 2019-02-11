@@ -29,16 +29,22 @@ class Landing extends Component {
         }
       }
 
-      passCheck = (pass) => {
-        const that = this;
-        API.checkPass(pass, (response) => {
-          if(response){
-            that.setState( {logged: true} );
-            that.hide();
-          }else{
-            that.wrongAlert();
-          }
-        })
+      passCheck = ( {username, password} ) => {
+        // const that = this;
+        // console.log(`${username}: ${password}`)
+        const userInfo = {
+          user: username,
+          password: password
+        }
+        API.checkPass(userInfo)
+            .then(response => {
+              if(password === response.data[0].password){
+                this.setState( {logged: true} );
+                this.hide();
+              }else{
+                this.wrongAlert();
+              }
+            })
       }
       
       

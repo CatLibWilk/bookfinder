@@ -18,10 +18,14 @@ class PassPrompt extends Component{
                 <form id="password-input-form" className="form-inline justify-content-center">
                    
                     <div className="form-group mx-sm-3 mb-2">
+                        <label for="username-input" className="sr-only">username</label>
+                        <input type="username" className="form-control" id="username-input" placeholder="username"></input>
+                    </div>
+                    <div className="form-group mx-sm-3 mb-2">
                         <label for="password-input" className="sr-only">Password</label>
                         <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                     </div>
-                    <button type="submit" className="btn btn-primary mb-2" onClick={(e) => {e.preventDefault(); this.props.funct(document.querySelector('#password-input').value)}}>Enter</button>
+                    <button type="submit" className="btn btn-primary mb-2" onClick={(e) => {e.preventDefault(); this.props.funct( {username: document.querySelector('#username-input').value, password: document.querySelector('#password-input').value} )}}>Enter</button>
                 </form>
             </div>
         )
