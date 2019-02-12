@@ -30,19 +30,19 @@ class Landing extends Component {
       }
 
       passCheck = ( {username, password} ) => {
-        // const that = this;
-        // console.log(`${username}: ${password}`)
+    
         const userInfo = {
           user: username,
           password: password
         }
+
         API.checkPass(userInfo)
             .then(response => {
-              if(password === response.data[0].password){
+              if(response.data[0] && password === response.data[0].password){
                 this.setState( {logged: true} );
                 this.hide();
               }else{
-                this.wrongAlert();
+                !response.data[0] ? this.noUser() : this.wrongAlert();
               }
             })
       }
@@ -57,6 +57,15 @@ class Landing extends Component {
 
           setTimeout(function(){
             document.querySelector('#wrong-alert').classList.remove('visible');
+            document.querySelector('#password-input-form').reset();
+          }, 1000)
+      };
+
+      noUser = () => {
+        document.querySelector('#no-user').classList.add('visible')
+
+          setTimeout(function(){
+            document.querySelector('#no-user').classList.remove('visible');
             document.querySelector('#password-input-form').reset();
           }, 1000)
       };

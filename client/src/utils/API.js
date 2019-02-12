@@ -13,7 +13,6 @@ export default {
     },
 
     checkPass: function(userInfo){
-        console.log(userInfo)
         return axios.get('/getUser/' + userInfo.user)
     }
 }
