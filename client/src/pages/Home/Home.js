@@ -16,7 +16,7 @@ class Home extends Component {
     }
     componentDidMount(){
         setTimeout(load, 1000);
-        
+       
         function load() {
           document.querySelector('.wrapper').classList.add('wrapper-loaded');
           document.querySelector('#home-background').classList.add('wrapper-loaded');
@@ -61,6 +61,17 @@ class Home extends Component {
         API.deleteBook(id)
             .then(response => { console.log(response); this.retrieveTitles(); } )
 
+    }
+
+    searchGoogle = () => {
+        const query = {
+            title: '',
+            author: ''
+        }
+        API.getTitles( query )
+            .then(( {data} ) => {
+                console.log(data.items)
+            })
     }
 
     render(){

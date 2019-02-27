@@ -14,5 +14,9 @@ export default {
 
     checkPass: function(userInfo){
         return axios.get('/getUser/' + userInfo.user)
+    },
+
+    getTitles: function(query){
+        return axios.post('/getTitles/', query)
     }
 }
