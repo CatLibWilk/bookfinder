@@ -7,8 +7,7 @@ module.exports = {
     getTitles: function( req, res ){
         const title = req.body.title.split(' ').join('+')
         const author = req.body.author
-        
-        queryUrl = `https://www.googleapis.com/books/v1/volumes?q=${title}+inauthor:${author}&key=${GKEY}`
+        const queryUrl = `https://www.googleapis.com/books/v1/volumes?q=${title}+inauthor:${author}&key=${GKEY}`
         console.log(queryUrl)
         axios.get(queryUrl)
                 .then(result => {

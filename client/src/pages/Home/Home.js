@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import List from '../../components/List';
 import ListItem from '../../components/ListItem';
 import AddForm from '../../components/AddForm';
+import SearchForm from '../../components/SearchForm';
 import API from '../../utils/API';
 
 class Home extends Component {
@@ -10,6 +11,8 @@ class Home extends Component {
         this.state = {
             title_input: '',
             author_input: '',
+            title_search_input: '',
+            author_search_input: '',
             priority_input: 0,
             returned_data: []
         }
@@ -40,6 +43,12 @@ class Home extends Component {
             case "author-input":
                 this.setState( {author_input: e.target.value} );
                 break;
+            case "title-search-input":
+                this.setState( {title_search_input: e.target.value} );
+                break;
+            case "author-search-input":
+                this.setState( {author_search_input: e.target.value} );
+                break;
             case "priority-input":
             console.log(`prio is ${e.target.value}`);
                 this.setState( {priority_input: e.target.value} ) ; console.log(this.state);
@@ -63,10 +72,11 @@ class Home extends Component {
 
     }
 
-    searchGoogle = () => {
+    searchGoogle = (e) => {
+        e.preventDefault();
         const query = {
-            title: '',
-            author: ''
+            title: this.state.title_search_input,
+            author: this.state.author_search_input
         }
         API.getTitles( query )
             .then(( {data} ) => {
@@ -79,14 +89,20 @@ class Home extends Component {
             <div className='row'>
                 <div id='home-background' className='col-12 text-center'>
 
-                    <AddForm width={'col-md-6'} funct={this.handleInput} subFunct={this.handleSubmit}/>
+                    <AddForm width={'col-md-6'} funct={this.handleInput} subFunct={this.handleSubmit} />
 
+                    <h1>Your Current List</h1>
+                    
                     <List>
                         {this.state.returned_data.length > 0 ? this.state.returned_data.map(book => {
                             console.log(book)
                             return <ListItem id={book.id} title={book.title} author={book.author} priority={book.priority} delFunct={() => this.handleDelete(book.id)} />
                         }) : <h3 className='mt-5'>add your first item</h3>}
                     </List>
+                    
+                    <h1>Find a Title with Google Books</h1>
+                    
+                    <SearchForm width={'col-md-6'} funct={this.handleInput} subFunct={this.searchGoogle} />
                 </div>
             </div>
         )
